@@ -1,0 +1,3 @@
+rootProject.name = 'yupic'
+
+include ':app'
