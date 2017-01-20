@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
+import { connect } from 'react-redux';
 import Hr from 'react-native-hr';
 import { Actions } from 'react-native-router-flux';
 import { Card, CardSection, InputNoLabel, Header, Button } from './common';
@@ -50,6 +51,11 @@ class SignUpForm extends Component {
       >
         Sign Up
       </Button>
+
+      <Hr
+        lineColor="black"
+        text="or"
+      />
 
        <Button
         style={{backgroundColor: '#007aff',
