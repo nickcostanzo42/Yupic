@@ -14,3 +14,6 @@ export const USERNAME_CHANGED = 'username_changed';
 export const SIGNUP_SUCCESS = 'signup_success';
 export const SIGNUP_FAIL = 'signup_fail';
 export const SIGNUP_USER = 'signup_user';
+
+//User information
+export const USER_INFO_FETCH = 'user_info_fetch';

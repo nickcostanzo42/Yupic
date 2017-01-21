@@ -26,7 +26,7 @@ const RouterComponent = () => {
           <Scene
             key="homePage"
             component={HomePage}
-            title="Welcome Home"
+            hideNavBar={true}
           />
         </Scene>
 
