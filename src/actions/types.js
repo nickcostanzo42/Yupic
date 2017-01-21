@@ -18,3 +18,8 @@ export const SIGNUP_USER = 'signup_user';
 //User information
 export const USER_INFO_FETCH = 'user_info_fetch';
 export const USER_PIC_FETCH = 'user_pic_fetch';
+export const UPDATE_PIC_URL = 'update_pic_url';
+export const UPDATE_USERNAME = 'update_username';
+export const UPDATE_INFO = 'update_info';
+export const UPDATE_SUCCESS = 'update_success';
+export const UPDATE_FAIL = 'update_fail';
