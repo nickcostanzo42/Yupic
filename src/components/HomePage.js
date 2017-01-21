@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { View, Text, Image } from 'react-native';
 import { Header, CardSection, Card } from './common';
 import { userInfoFetch } from '../actions';
+import Hr from 'react-native-hr';
+
 
 class HomePage extends Component {
 
@@ -17,22 +19,19 @@ class HomePage extends Component {
         <Header
           headerText={this.props.userinfo.username}
         />
-      <Card>
 
-        <CardSection>
+        <View style={styles.userInfoStyle}>
           <Image
             style={styles.thumbnailStyle}
             source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
           />
-        </CardSection>
-
-        <CardSection>
           <Text style={styles.viewsStyle}>
-            Stuff
+            Views:
           </Text>
-        </CardSection>
+        </View>
 
-      </Card>
+
+
       </View>
     )
   }
@@ -40,17 +39,18 @@ class HomePage extends Component {
 }
 
 const styles = {
+  userInfoStyle: {
+    borderWidth: 1,
+    margin: 5,
+    padding: 5,
+    backgroundColor: '#fff',
+    flexDirection: 'column',
+    borderColor: '#ddd',
+    position: 'relative'
+  },
   thumbnailStyle: {
     height: 200,
-    width: 200,
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
-  },
-  viewsStyle: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'flex-start'
+    width: 350
   }
 }
 
