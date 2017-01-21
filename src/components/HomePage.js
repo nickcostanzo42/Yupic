@@ -2,6 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Image } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { Header, CardSection, Card, Button } from './common';
 import { userInfoFetch, userPicFetch } from '../actions';
 import Hr from 'react-native-hr';
@@ -11,8 +12,10 @@ class HomePage extends Component {
 
   componentWillMount(){
     this.props.userInfoFetch();
-    // console.log(state)
-    // this.props.userPicFetch();
+  }
+
+  onUpdatePress() {
+    Actions.updatePage();
   }
 
   render() {
@@ -44,6 +47,7 @@ class HomePage extends Component {
         style={{backgroundColor: '#007aff',
         marginLeft: 20, marginRight: 20, marginBottom: 20}}
         textStyle={{fontFamily: 'Marker Felt'}}
+        onPress={this.onUpdatePress.bind(this)}
         >
           Update
         </Button>
