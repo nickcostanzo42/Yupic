@@ -29,10 +29,12 @@ class LoginForm extends Component {
 
   renderButton() {
     if (this.props.loading) {
-      return <Spinner size="large" />
+      return <Spinner
+      size="large"
+      />
     }
 
-    return (
+  return (
      <Button
         style={{backgroundColor: '#007aff',
         marginLeft: 20, marginRight: 20, marginBottom: 20}}
