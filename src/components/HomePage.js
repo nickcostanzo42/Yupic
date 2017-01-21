@@ -2,8 +2,8 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, Image } from 'react-native';
-import { Header, CardSection, Card } from './common';
-import { userInfoFetch } from '../actions';
+import { Header, CardSection, Card, Button } from './common';
+import { userInfoFetch, userPicFetch } from '../actions';
 import Hr from 'react-native-hr';
 
 
@@ -11,6 +11,8 @@ class HomePage extends Component {
 
   componentWillMount(){
     this.props.userInfoFetch();
+    // console.log(state)
+    // this.props.userPicFetch();
   }
 
   render() {
@@ -23,12 +25,28 @@ class HomePage extends Component {
         <View style={styles.userInfoStyle}>
           <Image
             style={styles.thumbnailStyle}
-            source={{uri: 'https://facebook.github.io/react/img/logo_og.png'}}
+            source={{uri: this.props.userinfo.userpic}}
           />
           <Text style={styles.viewsStyle}>
             Views:
           </Text>
         </View>
+
+        <Button
+        style={{backgroundColor: '#007aff',
+        marginLeft: 20, marginRight: 20, marginBottom: 20}}
+        textStyle={{fontFamily: 'Marker Felt'}}
+        >
+          Your People
+        </Button>
+
+        <Button
+        style={{backgroundColor: '#007aff',
+        marginLeft: 20, marginRight: 20, marginBottom: 20}}
+        textStyle={{fontFamily: 'Marker Felt'}}
+        >
+          Update
+        </Button>
 
 
 
@@ -60,4 +78,4 @@ const mapStateToProps = state => {
   return state
 }
 
-export default connect(mapStateToProps, { userInfoFetch })(HomePage);
+export default connect(mapStateToProps, { userInfoFetch, userPicFetch })(HomePage);

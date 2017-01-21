@@ -38,7 +38,7 @@ export const signupUser = ({ email, password, username }) => {
             displayName: username
           })
         firebase.database().ref(`/users/${user.uid}/`)
-        .set({username: username})
+        .set({username: username, userpic: 'https://facebook.github.io/react/img/logo_og.png'})
         .then(() => {
           Actions.userPage();
         })

@@ -17,3 +17,4 @@ export const SIGNUP_USER = 'signup_user';
 
 //User information
 export const USER_INFO_FETCH = 'user_info_fetch';
+export const USER_PIC_FETCH = 'user_pic_fetch';
