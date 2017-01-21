@@ -18,6 +18,10 @@ class HomePage extends Component {
     Actions.updatePage();
   }
 
+  onYourPeoplePress() {
+    Actions.userFeed();
+  }
+
   render() {
     return (
       <View>
@@ -39,6 +43,7 @@ class HomePage extends Component {
         style={{backgroundColor: '#007aff',
         marginLeft: 20, marginRight: 20, marginBottom: 20}}
         textStyle={{fontFamily: 'Marker Felt'}}
+        onPress={this.onYourPeoplePress.bind(this)}
         >
           Your People
         </Button>

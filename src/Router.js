@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import SignUpForm from './components/SignUpForm';
 import HomePage from './components/HomePage';
 import UpdateUser from './components/UpdateUser';
+import UserFeed from './components/UserFeed'
 
 const RouterComponent = () => {
   return(
@@ -34,6 +35,11 @@ const RouterComponent = () => {
             key="updatePage"
             component={UpdateUser}
             hideNavBar={true}
+          />
+          <Scene
+            key="userFeed"
+            component={UserFeed}
+            hideNaveBar={true}
           />
         </Scene>
 

@@ -7,3 +7,4 @@ export * from './Spinner';
 export * from './Confirm';
 export * from './InputNoLabel';
 export * from './Footer';
+export * from './UserFeedHeader';
