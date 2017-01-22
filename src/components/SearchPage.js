@@ -61,9 +61,6 @@ class SearchPage extends Component {
             style={styles.thumbnailStyle}
             source={{uri: this.props.search.searchPic}}
           />
-
-          {this.renderFollowButton()}
-
       </View>
     )
   }

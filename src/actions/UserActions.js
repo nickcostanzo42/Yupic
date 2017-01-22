@@ -10,7 +10,9 @@ import {
   UPDATE_FAIL,
   IS_FOLLOWING,
   IS_NOT_FOLLOWING,
-  FETCH_FOLLOWING_SUCCESS
+  FETCH_FOLLOWING_SUCCESS,
+  FIND_FOLLOWING_USERNAME,
+  FIND_FOLLOWING_PIC
 } from './types'
 
 export const userInfoFetch = () => {
@@ -95,11 +97,23 @@ export const fetchFollowing = () => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/following`)
       .on('value', snapshot => {
+        console.log(snapshot.val())
         dispatch({ type: FETCH_FOLLOWING_SUCCESS, payload: snapshot.val() })
       })
   }
 }
 
+export const findFollowingInfo = (followUid) => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${followUid}/`)
+    .on('value', snapshot => {
+      dispatch({ type: FIND_FOLLOWING_USERNAME, payload: snapshot.child('username').val() })
+      dispatch({ type: FIND_FOLLOWING_PIC, payload: snapshot.child('userpic').val() })
+    })
+  }
+}
 
 
 export const updateFail = (dispatch) => {

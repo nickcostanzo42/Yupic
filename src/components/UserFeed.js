@@ -2,12 +2,16 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import { ListView } from 'react-native';
+import { ListView, View, Text } from 'react-native';
 import { UserFeedHeader } from './common';
-import { fetchFollowing } from '../actions';
+import { fetchFollowing, findFollowingInfo } from '../actions';
+import ListItem from './ListItem'
+import firebase from 'firebase';
 import Hr from 'react-native-hr';
 
 class UserFeed extends Component {
+
+
   componentWillMount() {
     this.props.fetchFollowing();
 
@@ -25,9 +29,17 @@ class UserFeed extends Component {
     this.dataSource = ds.cloneWithRows(following);
   }
 
-  // renderRow(followingSingle) {
-  //   return <ListItem followingSingle={followingSingle} />
-  // }
+  renderRow(follow) {
+  firebase.database().ref(`/users/${follow.uid}/`)
+    .on('value', snapshot => {
+      follow.username = snapshot.child('username').val()
+      follow.userpic = snapshot.child('userpic').val()
+    })
+  console.log(follow)
+  return <ListItem follow={follow} />
+
+  }
+
 
   onSearchPress() {
     Actions.searchPage();
@@ -46,17 +58,23 @@ class UserFeed extends Component {
         searchPress={this.onSearchPress.bind(this)}
       />
 
-
+      <ListView
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />
     </View>
     )
   }
 }
 
 const mapStateToProps = state => {
-const following = _.map(state.following, (val, uid) => {
-    return { ...val, uid }
+  const following = _.map(state.following, (val, email) => {
+    return { ...val, email }
   })
 return { following }
 }
 
-export default connect(mapStateToProps, { fetchFollowing })(UserFeed);
+export default connect(mapStateToProps, {
+  fetchFollowing, findFollowingInfo
+})(UserFeed);
