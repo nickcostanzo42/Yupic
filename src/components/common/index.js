@@ -8,3 +8,4 @@ export * from './Confirm';
 export * from './InputNoLabel';
 export * from './Footer';
 export * from './UserFeedHeader';
+export * from './SearchHeader'

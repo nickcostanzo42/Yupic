@@ -1,22 +1,37 @@
 //Import libraries for making a component
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
 
 //Making a component
 const UserFeedHeader = (props) => {
-  const { textStyle, viewStyle, navStyle, backStyle, searchStyle } = styles;
+  const { textStyle, viewStyle, navStyle, homeStyle, searchStyle } = styles;
 
   return (
     <View style={viewStyle}>
       <Text style={textStyle}>{props.headerText}</Text>
-      <View style={navStyle}>
-        <Text style={backStyle}>
-          Back
-        </Text>
 
+      <View style={navStyle}>
+
+      <TouchableWithoutFeedback
+        onPress={props.homePress}
+      >
+      <View>
+        <Text style={homeStyle}>
+          Home
+        </Text>
+      </View>
+      </TouchableWithoutFeedback>
+
+      <TouchableWithoutFeedback
+        onPress={props.searchPress}
+      >
+      <View>
         <Text style={searchStyle}>
           Search
         </Text>
+      </View>
+      </TouchableWithoutFeedback>
+
       </View>
     </View>
 
@@ -46,7 +61,7 @@ const styles = {
     marginTop: 20,
     justifyContent: 'space-between'
   },
-  backStyle: {
+  homeStyle: {
     marginRight: 40,
     fontFamily: 'Marker Felt',
     color: 'white'

@@ -7,12 +7,18 @@ import { Header, CardSection, Card, Button, InputNoLabel, UserFeedHeader } from 
 import Hr from 'react-native-hr';
 
 class UserFeed extends Component {
+
+  onSearchPress() {
+    Actions.searchPage();
+  }
+
   render() {
     return (
       <UserFeedHeader
         headerText="Your People"
+        homePress={() => console.log("pressed")}
+        searchPress={this.onSearchPress.bind(this)}
       />
-
     )
   }
 }
