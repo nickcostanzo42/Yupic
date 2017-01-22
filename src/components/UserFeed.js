@@ -25,9 +25,9 @@ class UserFeed extends Component {
     this.dataSource = ds.cloneWithRows(following);
   }
 
-  renderRow(followingSingle) {
-    return <ListItem followingSingle={followingSingle} />
-  }
+  // renderRow(followingSingle) {
+  //   return <ListItem followingSingle={followingSingle} />
+  // }
 
   onSearchPress() {
     Actions.searchPage();
@@ -46,11 +46,7 @@ class UserFeed extends Component {
         searchPress={this.onSearchPress.bind(this)}
       />
 
-      <ListView
-        enableEmptySections
-        dataSource={this.dataSource}
-        renderRow={this.renderRow}
-      />
+
     </View>
     )
   }
