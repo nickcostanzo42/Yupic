@@ -88,6 +88,17 @@ export const checkFollowing = (email) => {
   }
 }
 
+export const fetchFollowing = () => {
+  const { currentUser } = firebase.auth();
+
+  return (dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/following`)
+    .child('uid').on('value', snapshot => {
+        console.log(snapshot.val())
+      })
+  }
+}
+
 
 
 export const updateFail = (dispatch) => {
