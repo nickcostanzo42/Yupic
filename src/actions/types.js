@@ -23,3 +23,14 @@ export const UPDATE_USERNAME = 'update_username';
 export const UPDATE_INFO = 'update_info';
 export const UPDATE_SUCCESS = 'update_success';
 export const UPDATE_FAIL = 'update_fail';
+
+//Search
+export const SEARCH_CHANGED = 'search_changed';
+export const DO_SEARCH = 'do_search';
+export const SEARCH_FAIL = 'search_fail';
+export const USER_SEARCH_USERNAME = 'user_search_username';
+export const USER_SEARCH_PIC = 'user_search_pic';
+export const USER_SEARCH_UID = 'user_search_uid'
+export const FOLLOW_USER = 'follow_user';
+export const IS_FOLLOWING = 'is_following';
+export const IS_NOT_FOLLOWING = 'is_not_following';

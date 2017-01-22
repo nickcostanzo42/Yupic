@@ -31,16 +31,15 @@ export const signupUser = ({ email, password, username }) => {
             type: LOGIN_USER,
             payload: user
           });
-
+        const formatEmail = email.replace(/\./g, ',')
         const currentuser = firebase.auth().currentUser;
         if(currentuser){
-          user.updateProfile({
-            displayName: username
-          })
-        firebase.database().ref(`/users/${user.uid}/`)
+        firebase.database().ref(`/users/${currentuser.uid}`)
         .set({username: username, userpic: 'https://facebook.github.io/react/img/logo_og.png',
               email: email})
         .then(() => {
+          firebase.database().ref(`/email/${formatEmail}`)
+          .set({uid: currentuser.uid })
           Actions.userPage();
         })
         .catch(() => signupUserFail(dispatch))

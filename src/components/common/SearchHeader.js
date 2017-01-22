@@ -1,14 +1,25 @@
 //Import libraries for making a component
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableWithoutFeedback } from 'react-native';
 
 //Making a component
 const SearchHeader = (props) => {
-  const { textStyle, viewStyle } = styles;
+  const { textStyle, viewStyle, navStyle, backStyle } = styles;
 
   return (
     <View style={viewStyle}>
       <Text style={textStyle}>{props.headerText}</Text>
+
+      <TouchableWithoutFeedback
+        onPress={props.backPress}
+      >
+        <View style={navStyle}>
+          <Text style={backStyle}>
+            Back
+          </Text>
+        </View>
+      </TouchableWithoutFeedback>
+
     </View>
 
   )
@@ -19,7 +30,7 @@ const styles = {
     backgroundColor: '#FF5733',
     justifyContent: 'center',
     alignItems: 'center',
-    height: 150,
+    height: 100,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
@@ -27,10 +38,19 @@ const styles = {
     position: 'relative'
   },
   textStyle: {
-    fontSize: 50,
+    fontSize: 30,
+    marginTop: 10,
     fontFamily: 'Marker Felt',
     color: 'white'
-  }
+  },
+  navStyle: {
+    alignItems: 'center'
+  },
+  backStyle: {
+    fontFamily: 'Marker Felt',
+    color: 'white'
+  },
+
 }
 
 //Make the component available to other parts of the app

@@ -12,11 +12,15 @@ class UserFeed extends Component {
     Actions.searchPage();
   }
 
+  onHomePress() {
+    Actions.homePage();
+  }
+
   render() {
     return (
       <UserFeedHeader
         headerText="Your People"
-        homePress={() => console.log("pressed")}
+        homePress={this.onHomePress.bind(this)}
         searchPress={this.onSearchPress.bind(this)}
       />
     )

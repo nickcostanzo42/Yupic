@@ -34,7 +34,7 @@ class HomePage extends Component {
             style={styles.thumbnailStyle}
             source={{uri: this.props.userinfo.userpic}}
           />
-          <Text style={styles.viewsStyle}>
+          <Text>
             Views:
           </Text>
         </View>

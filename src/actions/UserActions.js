@@ -7,7 +7,9 @@ import {
   UPDATE_USERNAME,
   UPDATE_INFO,
   UPDATE_SUCCESS,
-  UPDATE_FAIL
+  UPDATE_FAIL,
+  IS_FOLLOWING,
+  IS_NOT_FOLLOWING
 } from './types'
 
 export const userInfoFetch = () => {
@@ -38,7 +40,6 @@ export const updatePicUrl = (text) => {
 export const updateInfo = (updateUsername, updatePicUrl) => {
   const { currentUser } = firebase.auth()
   return(dispatch) => {
-
       dispatch({ type: UPDATE_INFO })
       firebase.database().ref(`/users/${currentUser.uid}/`)
         .update({username: updateUsername, userpic: updatePicUrl })
@@ -48,14 +49,46 @@ export const updateInfo = (updateUsername, updatePicUrl) => {
           .catch(() => {
             dispatch({ type: UPDATE_FAIL })
           })
+  }
+}
 
+export const followUser = (userId, email) => {
+  const { currentUser } = firebase.auth();
+  const factoredEmail = email.replace(/\./g, ',')
+  return(dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/following/${factoredEmail}`)
+      .set({ uid: userId })
+  }
+}
+
+export const unfollowUser = (email) => {
+  const { currentUser } = firebase.auth();
+  const factoredEmail = email.replace(/\./g, ',')
+    return(dispatch) => {
+      console.log('action called')
+      firebase.database().ref(`/users/${currentUser.uid}/following/${factoredEmail}`)
+        .remove()
+
+    }
+}
+
+export const checkFollowing = (email) => {
+  const { currentUser } = firebase.auth()
+  const factoredEmail = email.replace(/\./g, ',')
+
+  return(dispatch) => {
+    firebase.database().ref(`/users/${currentUser.uid}/following/${factoredEmail}/`)
+      .on('value', snapshot => {
+        if(snapshot.child('uid').val() !== null) {
+          dispatch({ type: IS_FOLLOWING})
+        } else {
+          dispatch({ type: IS_NOT_FOLLOWING})
+        }
+    })
   }
 }
 
 
-// export const updateSuccess = (dispatch) => {
-//   dispatch({ type: UPDATE_SUCCESS })
-// }
 
 export const updateFail = (dispatch) => {
   dispatch({ type: UPDATE_FAIL })

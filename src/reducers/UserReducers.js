@@ -5,16 +5,18 @@ import {
   UPDATE_USERNAME,
   UPDATE_INFO,
   UPDATE_SUCCESS,
-  UPDATE_FAIL
+  UPDATE_FAIL,
+  IS_FOLLOWING,
+  IS_NOT_FOLLOWING
 } from '../actions/types';
 
 const INITIAL_STATE = {
   loading: null,
-  error: ''
+  error: '',
+  following: null
 };
 
 export default (state = INITIAL_STATE, action) => {
-  console.log(action)
 
   switch (action.type) {
     case USER_INFO_FETCH:
@@ -30,6 +32,10 @@ export default (state = INITIAL_STATE, action) => {
     case UPDATE_SUCCESS:
       return { ...state, loading: false, error: "You've succesfully updated your profile!",
       updatePic: '', updateUsername: ''}
+    case IS_FOLLOWING:
+      return { ...state, following: true}
+    case IS_NOT_FOLLOWING:
+      return { ...state, following: false}
     case UPDATE_FAIL:
       return { ...state, loading: false, error: "Something went wrong.."}
     default:
