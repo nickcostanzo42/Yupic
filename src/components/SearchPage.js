@@ -60,6 +60,7 @@ class SearchPage extends Component {
           <Image
             style={styles.thumbnailStyle}
             source={{uri: this.props.search.searchPic}}
+            resizeMode='contain'
           />
       </View>
     )

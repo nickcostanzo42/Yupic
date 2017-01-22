@@ -3,7 +3,8 @@ import {
   PASSWORD_CHANGED,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
-  LOGIN_USER
+  LOGIN_USER,
+  LOGOUT_USER_SUCCESS
 } from '../actions/types';
 
 const INITIAL_STATE = {
@@ -28,6 +29,8 @@ export default (state = INITIAL_STATE, action) => {
     case LOGIN_USER_FAIL:
       return { ...state, error: 'Username/Password don\'t match our records',
       password: '', loading: false }
+    case LOGOUT_USER_SUCCESS:
+      return { ...state, ...INITIAL_STATE }
     default:
      return state
   }

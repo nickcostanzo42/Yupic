@@ -27,6 +27,7 @@ render() {
           <Image
             style={styles.thumbnailStyle}
             source={{uri: this.props.follow.userpic}}
+            resizeMode='contain'
           />
       </View>
 
