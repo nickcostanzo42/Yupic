@@ -34,3 +34,4 @@ export const USER_SEARCH_UID = 'user_search_uid'
 export const FOLLOW_USER = 'follow_user';
 export const IS_FOLLOWING = 'is_following';
 export const IS_NOT_FOLLOWING = 'is_not_following';
+export const FETCH_FOLLOWING_SUCCESS = 'fetch_following_success'

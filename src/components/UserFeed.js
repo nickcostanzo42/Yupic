@@ -22,11 +22,12 @@ class UserFeed extends Component {
     const ds = new ListView.DataSource({
       rowHasChanged: (r1,r2) => r1 !== r2
     })
-
     this.dataSource = ds.cloneWithRows(following);
   }
 
-
+  renderRow(followingSingle) {
+    return <ListItem followingSingle={followingSingle} />
+  }
 
   onSearchPress() {
     Actions.searchPage();
@@ -38,20 +39,27 @@ class UserFeed extends Component {
 
   render() {
     return (
+    <View>
       <UserFeedHeader
         headerText="Your People"
         homePress={this.onHomePress.bind(this)}
         searchPress={this.onSearchPress.bind(this)}
       />
+
+      <ListView
+        enableEmptySections
+        dataSource={this.dataSource}
+        renderRow={this.renderRow}
+      />
+    </View>
     )
   }
 }
 
 const mapStateToProps = state => {
 const following = _.map(state.following, (val, uid) => {
-    return { ...val, uid}
+    return { ...val, uid }
   })
-
 return { following }
 }
 

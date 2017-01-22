@@ -9,7 +9,8 @@ import {
   UPDATE_SUCCESS,
   UPDATE_FAIL,
   IS_FOLLOWING,
-  IS_NOT_FOLLOWING
+  IS_NOT_FOLLOWING,
+  FETCH_FOLLOWING_SUCCESS
 } from './types'
 
 export const userInfoFetch = () => {
@@ -93,8 +94,8 @@ export const fetchFollowing = () => {
 
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/following`)
-    .child('uid').on('value', snapshot => {
-        console.log(snapshot.val())
+      .on('value', snapshot => {
+        dispatch({ type: FETCH_FOLLOWING_SUCCESS, payload: snapshot.val() })
       })
   }
 }

@@ -19,7 +19,6 @@ export const searchChange = (text) => {
 
 export const searchForEmail = ( email ) => {
  return(dispatch) => {
-  // dispatch({ type: DO_SEARCH })
   firebase.database().ref(`/email/${email}`).on('value', snapshot => {
       const searchUid = snapshot.child('uid').val()
       dispatch({ type: USER_SEARCH_UID, payload: searchUid })
